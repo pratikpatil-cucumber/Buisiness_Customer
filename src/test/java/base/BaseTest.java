@@ -62,6 +62,7 @@ public class BaseTest {
 		driver.findElement(By.xpath("//a[.='Logout']")).click();
 		Reporter.log("Click on Logout button", true);
 		logger.log(LogStatus.PASS, "Click on Logout button");
+		Thread.sleep(4000);
 		driver.quit();
 		extent.flush();
 		extent.close();
