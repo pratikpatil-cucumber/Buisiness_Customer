@@ -7,11 +7,13 @@ import java.io.InputStream;
 import java.util.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -57,6 +59,9 @@ public class BaseTest {
 	@AfterTest
 	public void endReport() throws InterruptedException {
 		Thread.sleep(5000);
+		driver.findElement(By.xpath("//a[.='Logout']")).click();
+		Reporter.log("Click on Logout button", true);
+		logger.log(LogStatus.PASS, "Click on Logout button");
 		driver.quit();
 		extent.flush();
 		extent.close();
